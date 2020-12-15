@@ -3,6 +3,7 @@ import { fetchUsers } from "../redux/users/userActions";
 import { deleteUser } from "../redux/crud/crudActions";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import {Spinner} from "react-bootstrap"
 
 function UserContainer({ userData, fetchUsers, deleteUser }) {
   const history = useHistory();
@@ -26,7 +27,7 @@ function UserContainer({ userData, fetchUsers, deleteUser }) {
   };
 
   return userData.loading ? (
-    <h1>Loading...</h1>
+    <h1><Spinner animation="border" role="status" /></h1>
   ) : userData.error ? (
     <h3>{userData.error}</h3>
   ) : (
