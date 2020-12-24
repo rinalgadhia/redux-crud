@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.css";
-import UserContainer from './components/user-container';
+import UserContainer from './components/userContainer';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"

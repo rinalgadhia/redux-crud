@@ -25,11 +25,12 @@ export const fetchUserFailure = (error) => {
 
 export const fetchUsers = () => {
     return (dispatch) => {
-        dispatch(fetchUserRequest);
+        dispatch(fetchUserRequest());
         axios.get('http://localhost/users/display.php')
             .then(response => {
                 const users = response.data;
                 // console.log(users);
+
                 dispatch(fetchUserSuccess(users));
             })
             .catch(error => {

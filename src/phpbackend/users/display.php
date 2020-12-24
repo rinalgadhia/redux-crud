@@ -6,6 +6,7 @@
     // header("Access-Control-Max-Age", "1800");
     // header("Access-Control-Allow-Methods","PUT, POST, GET, DELETE, PATCH, OPTIONS");
     // header("Access-Control-Allow-Headers", "content-type, Authorization");
+    sleep(1);
 
     $host = "localhost";
     $username = "root";

@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { fetchUsers } from "../redux/users/userActions";
 import { deleteUser } from "../redux/crud/crudActions";
 import { connect } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import {Spinner} from "react-bootstrap"
+import { useHistory } from "react-router-dom";
+// import { Spinner } from "react-bootstrap";
 
-function UserContainer({ userData, fetchUsers, deleteUser }) {
+function UserDetails({ userData, fetchUsers, deleteUser }) {
   const history = useHistory();
 
   useEffect(() => {
-    fetchUsers();
+    fetchUsers();    
   }, [fetchUsers]);
 
   const editHandler = (e, user) => {
@@ -27,17 +27,20 @@ function UserContainer({ userData, fetchUsers, deleteUser }) {
   };
 
   return userData.loading ? (
-    <h1><Spinner animation="border" role="status" /></h1>
+    <h1>
+      {/* <Spinner animation="border" /> */}
+      <img src="spinner.gif" alt="Loading..." />
+    </h1>
   ) : userData.error ? (
     <h3>{userData.error}</h3>
   ) : (
     <div>
-      <div className="jumbotron text-white h1 bg-info">
+      {/* <div className="jumbotron text-white h1 bg-info">
         <span>User Details</span>
         <Link to="/insert">
           <button className="btn btn-light float-right mr-5">Add New</button>
         </Link>
-      </div>
+      </div> */}
       <table className="table">
         <thead>
           <tr>
@@ -48,7 +51,8 @@ function UserContainer({ userData, fetchUsers, deleteUser }) {
           </tr>
         </thead>
         <tbody>
-          {userData.users.map((user) => (
+          {
+          userData.users.map((user) => (
             <tr id={"row" + user.user_id} key={user.user_id}>
               <td>{user.user_name}</td>
               <td>{user.email}</td>
@@ -62,7 +66,14 @@ function UserContainer({ userData, fetchUsers, deleteUser }) {
                 </button>
                 <button
                   className="btn btn-danger"
-                  onClick={() => deleteHandler(user.user_id)}
+                  onClick={() => {
+                    let cnfirm = window.confirm(
+                      "Are you sure you want to delete this record?"
+                    );
+                    if (cnfirm) {
+                      deleteHandler(user.user_id);
+                    }
+                  }}
                 >
                   Delete
                 </button>
@@ -88,4 +99,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(UserDetails);

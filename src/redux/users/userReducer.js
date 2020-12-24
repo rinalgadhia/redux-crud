@@ -4,12 +4,10 @@ const initialState = {
     loading: false,
     users: [],
     error: '',
-
 }
 
-
 const userReducer = (state = initialState, action) => {
-    // console.log(action.payload);
+    // console.log(state);
     switch(action.type) {
         case FETCH_USER_REQUEST:
             return {
@@ -18,6 +16,12 @@ const userReducer = (state = initialState, action) => {
             }
 
         case FETCH_USER_SUCCESS:
+            setTimeout(function() {
+                return {
+                    ...state,
+                    loading: true,
+                }
+            }, 3000)
             return {
                 ...state,
                 loading: false,

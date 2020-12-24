@@ -38,7 +38,7 @@ const InsertUser = (props) => {
       });
       //passRef.current.setAttribute("disabled", true);
     }
-  }, []);
+  }, [user]);
 
   const handleChange = (e) => {
     setUser({
