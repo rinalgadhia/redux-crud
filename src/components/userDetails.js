@@ -35,12 +35,6 @@ function UserDetails({ userData, fetchUsers, deleteUser }) {
     <h3>{userData.error}</h3>
   ) : (
     <div>
-      {/* <div className="jumbotron text-white h1 bg-info">
-        <span>User Details</span>
-        <Link to="/insert">
-          <button className="btn btn-light float-right mr-5">Add New</button>
-        </Link>
-      </div> */}
       <table className="table">
         <thead>
           <tr>
